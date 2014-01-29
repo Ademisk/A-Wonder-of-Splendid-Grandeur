@@ -1,0 +1,3 @@
+function Level() {
+	var author;
+}
