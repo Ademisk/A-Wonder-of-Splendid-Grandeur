@@ -1,0 +1,6 @@
+C:\Users\Max\Documents\GitHub\Game\.git\
+C:\Users\Max\Documents\GitHub\Game\misc\
+C:\Users\Max\Documents\GitHub\Game\prop.bat
+C:\Users\Max\Documents\GitHub\Game\LaunchGame.bat
+C:\Users\Max\Documents\GitHub\Game\Exclusion_List.txt
+C:\Users\Max\Documents\GitHub\Game\README.txt

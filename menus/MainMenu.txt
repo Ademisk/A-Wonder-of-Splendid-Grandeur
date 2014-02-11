@@ -1,0 +1,21 @@
+{
+"Menu" : { 
+"Title" : "Main Menu", 
+"backgroundImg" : "img/mainMenuBG.png", 
+"subMenus" : [
+    { "Title" : "Create Character",
+    "backgroundImg" : "img/createCharBG.png",
+    "xCoord" : "0",
+    "yCoord" : "0",
+    "width" : "100%"
+    "height" : "33%"
+    },
+    { "Title" : "Select Game",
+    "backgroundImg" : "img/gameSelectBG.png",
+    "xCoord" : "0",
+    "yCoord" : "pageWidth / 3",
+    "width" : "100%"
+    "height" : "33%"
+    },
+    }]
+}
