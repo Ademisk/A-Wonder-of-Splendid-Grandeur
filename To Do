@@ -1,0 +1,21 @@
+To Do - Main Menu Saga
+==================
++ Create n-deep submenu structures in save files
+- Figure out why the fuck the stage won't accept the child img. Perhaps resolving that fucking random js error will lead to a solution...
+- Get visuals to display on the screen
+- Flesh out menus
+	- Design a structure for storing data in files
+	- Create an interface to handle user input
+
+
+Misc
+==================
+- Improve Batch to copy only modified files
+
+
+Sagas
+==================
+* Load Player
+* Game Catalog
+* Gameplay
+* Score System/Saved Files (DataBase integration)

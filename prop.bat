@@ -1,1 +1,1 @@
-xcopy "C:\Users\Max\Documents\GitHub\Game" "C:\inetpub\wwwroot" /c /e /i /y /exclude:C:\Users\Max\Documents\GitHub\Game\Exclusion_List.txt
+xcopy "C:\Users\Max\Documents\GitHub\Game" "C:\inetpub\wwwroot" /c /d /e /i /y /exclude:C:\Users\Max\Documents\GitHub\Game\Exclusion_List.txt

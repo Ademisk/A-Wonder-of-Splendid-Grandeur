@@ -1,6 +1,7 @@
-var MAIN_MENU_FILE = "file:///C:/Documents and Settings/Max/Documents/GitHub/Game/menus/MainMenu.txt";
+var MAIN_MENU_FILE = "./menus/MainMenuFile.js";
 
-function MainLoader() {
+function MainLoader(canvas) {
+	this.stage = new Stage($('#' + canvas).get(0));
 	this.mainMenu;
 	this.Players = new Array();
 	this.Levels = new Array();
@@ -9,16 +10,11 @@ function MainLoader() {
 
 
 MainLoader.prototype.initialize = function() {
-	try {
-		this.loadLevels();
-	}
-	catch (e) {
-		alert(e.message);
-	}
+	this.loadLevels();
 	this.loadPlayers();
 
 	this.mainMenu = new MainMenu(this.Players, this.Levels, MAIN_MENU_FILE);
-	this.mainMenu.startMenu();
+	this.mainMenu.startMenu(this.stage);
 }
 
 

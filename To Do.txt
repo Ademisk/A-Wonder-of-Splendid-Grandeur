@@ -1,0 +1,8 @@
+To Do
+==================
+- Create n-deep submenu structures in save files
+- Get visuals to display on the screen
+- Flesh out menus
+	- Design a structure for storing data in files
+	- Create an interface to handle user input
+
