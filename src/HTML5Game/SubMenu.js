@@ -1,4 +1,6 @@
-function SubMenu(contents) {
+function SubMenu(className, contents) {
+	this.className = className;
+
 	this.Images = new Array();
 	this.Sounds = new Array();
 	this.Buttons = new Array();
@@ -14,7 +16,7 @@ SubMenu.prototype.integrateData = function () {
 	var that = this;
 	if (this.arrData['subMenus']) {
 		$.each(this.arrData['subMenus'], function(index, value) {
-			that.SubMenus[index] = new SubMenu(value);
+			that.SubMenus[index] = new SubMenu(that.className + "_SubMenu_" + index, value);
 		});
 	}
 
@@ -24,4 +26,34 @@ SubMenu.prototype.integrateData = function () {
 
 SubMenu.prototype.loadResources = function() {
 
+}
+
+
+//=====================================
+// Interactive
+//=====================================
+
+SubMenu.prototype.update = function() {
+
+}
+
+
+//=====================================
+// Interactive
+//=====================================
+
+SubMenu.prototype.leftKey = function() {
+
+}
+
+SubMenu.prototype.upKey = function() {
+	
+}
+
+SubMenu.prototype.rightKey = function() {
+	
+}
+
+SubMenu.prototype.downKey = function() {
+	
 }

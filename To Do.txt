@@ -1,7 +1,12 @@
+Picking Up Where Left Off...
+==================
+- Event catchers in specific elements, are they possible? Or should functions exist in each class called left/up/right/down which will be called by the base class (MainLoader.js), and then delegate their own results to the event (and possible propagate it)?
+
+
 To Do
 ==================
-- Create n-deep submenu structures in save files
-- Get visuals to display on the screen
++ Create n-deep submenu structures in save files
++ Get visuals to display on the screen
 - Flesh out menus
 	- Design a structure for storing data in files
 	- Create an interface to handle user input
