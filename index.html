@@ -14,16 +14,18 @@
 <script src="./src/HTML5Game/SubMenu.js"></script>
 <script src="./src/HTML5Game/Player.js"></script>
 <script src="./src/HTML5Game/Level.js"></script>
+<script src="./src/HTML5Game/KeyValues.js"></script>
 <script>
+
+var CANVAS_WIDTH = 1200;
+var CANVAS_HEIGHT = 800;
+
 $('body').ready(function(){
 	var loader = new MainLoader('MainLoader', "mainCanvas");	
 });
-
-
-
 </script>
 </head>
 <body>
-	<canvas id="mainCanvas" width="900" height="900" style="background-color:#222;border: solid 1px #0F0">Canvas is not supported</canvas>
+	<canvas id="mainCanvas" width="1200" height="800" style="background-color:#222;border: solid 1px #0F0">Canvas is not supported</canvas>
 </body>
 </html

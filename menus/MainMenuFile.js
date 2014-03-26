@@ -4,6 +4,7 @@
         "canvasW": "900px",
         "canvasH": "900px",
         "images": [{
+            "name": "background",
             "img": "img/MainMenu.png",
             "yCoord": "0",
             "xCoord": "0",
@@ -12,49 +13,64 @@
         }],
         "subMenus": [
             {
-                "canvasW": "700px",
+                "canvasW": "300px",
                 "canvasH": "300px",
-                "images" : [{
+                "Images" : [{
+                    "name": "bg - unselected 1",
                     "img": "img/MenuBG1.png",
                     "xCoord": "0px",
                     "yCoord": "0px",
-                    "width": "700px",
+                    "width": "100px",
                     "height": "300px"
-                }],
-                "subMenus": [
-                {
-                    "canvasW": "700px",
-                    "canvasH": "300px",
-                    "images" : [{
-                        "img": "img/MenuBG1.png",
-                        "xCoord": "0px",
-                        "yCoord": "0px",
-                        "width": "700px",
-                        "height": "300px"
+                    },
+                    {
+                    "name": "bg - selected 1",
+                    "img": "img/MenuBG1S.png",
+                    "xCoord": "0px",
+                    "yCoord": "0px",
+                    "width": "100px",
+                    "height": "300px"
                     }]
-                }]
             },
             {
-                "canvasW": "800px",
+                "canvasW": "300px",
                 "canvasH": "300px",
-                "images" : [{
-                    "img": "img/MenuBG1.png",
+                "Images" : [{
+                    "name": "bg - unselected 2",
+                    "img": "img/MenuBG2.png",
                     "xCoord": "0px",
                     "yCoord": "301px",
-                    "width": "800px",
+                    "width": "200px",
                     "height": "300px"
-                }]
+                    },
+                    {
+                    "name": "bg - selected 2",
+                    "img": "img/MenuBG2S.png",
+                    "xCoord": "0px",
+                    "yCoord": "301px",
+                    "width": "200px",
+                    "height": "300px"
+                    }]
             },
             {
-                "canvasW": "900px",
+                "canvasW": "300px",
                 "canvasH": "300px",
-                "images" : [{
-                    "img": "img/MenuBG1.png",
+                "Images" : [{
+                    "name": "bg - unselected 3",
+                    "img": "img/MenuBG3.png",
                     "xCoord": "0px",
                     "yCoord": "601px",
-                    "width": "900px",
+                    "width": "300px",
                     "height": "300px"
-                }]
+                    },
+                    {
+                    "name": "bg - unselected 3",
+                    "img": "img/MenuBG3S.png",
+                    "xCoord": "0px",
+                    "yCoord": "601px",
+                    "width": "300px",
+                    "height": "300px"
+                    }]
             }
         ]
     }

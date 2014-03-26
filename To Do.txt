@@ -5,9 +5,16 @@ Picking Up Where Left Off...
 
 To Do
 ==================
+- Find out better animation techniques for easeljs, and animate the menus
+- Convert the level key handling to imitate that of the MainMenu
 + Create n-deep submenu structures in save files
 + Get visuals to display on the screen
 - Flesh out menus
 	- Design a structure for storing data in files
 	- Create an interface to handle user input
+
+- Clean Up
+	- Have 1 global timer that keeps track of actual time elapse each update
+	- The image widths are not being used from the JSON file. Images are set to the images default size
+	- Cache the larger images. This can probably be applied to most of the menu
 
