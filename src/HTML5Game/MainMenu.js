@@ -24,7 +24,7 @@ function MainMenu(instanceName, Players, Levels, fileName, stage) {
 
 	this.refStage = stage;
 	//this.hasFocus = false;			//Is this element currently selected (like a button or a submenu. Doesn't really apply to MainMenu, but it's here for conformity)
-	this.typeOfMenu = "";
+	//this.typeOfMenu = "";
 
 	//this.isHighlighted = false;		//Is the selector currently on this element? Then we should blink or something!
 	//this.intervalCounter = 0;		//curently based on frames elapsed, but should be converted to time elapsed
@@ -32,10 +32,18 @@ function MainMenu(instanceName, Players, Levels, fileName, stage) {
 
 	this.backgroundImg = "";
 
+	this.LEFT_OFFSCREEN_X = -500;
 	this.LEFT_GAME_X = -50;
 	this.CENTER_GAME_X = 400;
 	this.RIGHT_GAME_X = 850;
+	this.RIGHT_OFFSCREEN_X = 1300;
 	this.GAME_Y = 150;
+
+	this.SCROLL_SPEED = 400;			//time (in ms) each scroll takes
+	this.SCROLL_FREQUENCY = 500;		//scroll each 1/2 second
+
+	this.allowScroll = true;
+	this.timeOfLastScroll = 0;
 	this.highlightedIndex = 0;
 	this.GameSelectionPanels = {};
 
@@ -107,7 +115,7 @@ MainMenu.prototype.initializeResources = function() {
 //=====================================
 
 //Launches the menu by attaching all objects to the stage
-MainMenu.prototype.startMenu = function() {
+MainMenu.prototype.startMenu = function(tickerTime) {
 	var that = this;
 
 	//background
@@ -148,8 +156,13 @@ MainMenu.prototype.startMenu = function() {
 	});
 }
 
-MainMenu.prototype.update = function() {
+MainMenu.prototype.update = function(tickerTime) {
 	var that = this;
+
+	if (this.SCROLL_FREQUENCY < tickerTime - this.timeOfLastScroll) {
+		this.allowScroll = true;
+		this.timeOfLastScroll = tickerTime;
+	}
 
 	// if (this.isHighlighted) {
 	// 	this.animateSelect();
@@ -190,13 +203,19 @@ MainMenu.prototype.setFocus = function(hasFocus) {
 MainMenu.prototype.handleKey = function(index) {
 	switch (index) {
 		case KEY_LEFT:
-			this.rotateLeft();
+			if (this.allowScroll) {
+				this.rotateLeft();
+				this.allowScroll = false;
+			}
 		break;
 		case KEY_UP:
 			//yOffset -= 1;
 		break;
 		case KEY_RIGHT:
-			this.rotateRight();
+			if (this.allowScroll) {
+				this.rotateRight();
+				this.allowScroll = false;
+			}
 		break;
 		case KEY_DOWN:
 			//yOffset += 1;
@@ -219,18 +238,19 @@ MainMenu.prototype.rotateLeft = function() {
 	var index = this.highlightedIndex;
 
 	//off screen left
-	this.GameSelectionPanels[(gameCount + (index - 1)) % gameCount].x = CANVAS_WIDTH;
-	this.GameSelectionPanels[(gameCount + (index - 1)) % gameCount].y = CANVAS_HEIGHT;
+	//keep the same scrolling distance to retain the scroll speed
+	createjs.Tween.get(this.GameSelectionPanels[(gameCount + (index - 1)) % gameCount]).to({x:this.LEFT_OFFSCREEN_X}, this.SCROLL_SPEED, Ease.linear);
 
 	//shift left - original index
-	this.GameSelectionPanels[index].x = this.LEFT_GAME_X;
+	createjs.Tween.get(this.GameSelectionPanels[index]).to({x:this.LEFT_GAME_X}, this.SCROLL_SPEED, Ease.linear);
 
 	//this will become the new index
-	this.GameSelectionPanels[(gameCount + (index + 1)) % gameCount].x = this.CENTER_GAME_X;
+	createjs.Tween.get(this.GameSelectionPanels[(gameCount + (index + 1)) % gameCount]).to({x:this.CENTER_GAME_X}, this.SCROLL_SPEED, Ease.linear);
 
 	//on screen from right
-	this.GameSelectionPanels[(gameCount + (index + 2)) % gameCount].x = this.RIGHT_GAME_X;
+	this.GameSelectionPanels[(gameCount + (index + 2)) % gameCount].x = this.RIGHT_OFFSCREEN_X;
 	this.GameSelectionPanels[(gameCount + (index + 2)) % gameCount].y = this.GAME_Y;
+	createjs.Tween.get(this.GameSelectionPanels[(gameCount + (index + 2)) % gameCount]).to({x:this.RIGHT_GAME_X}, this.SCROLL_SPEED, Ease.linear);
 
 	//set new index
 	this.highlightedIndex = (gameCount + (index + 1)) % gameCount;
@@ -241,18 +261,18 @@ MainMenu.prototype.rotateRight = function() {
 	var index = this.highlightedIndex;
 
 	//off screen right
-	this.GameSelectionPanels[(gameCount + (index + 1)) % gameCount].x = CANVAS_WIDTH;
-	this.GameSelectionPanels[(gameCount + (index + 1)) % gameCount].y = CANVAS_HEIGHT;
+	createjs.Tween.get(this.GameSelectionPanels[(gameCount + (index + 1)) % gameCount]).to({x:this.RIGHT_OFFSCREEN_X}, this.SCROLL_SPEED, Ease.linear);
 
 	//shift right - original index
-	this.GameSelectionPanels[index].x = this.RIGHT_GAME_X;
+	createjs.Tween.get(this.GameSelectionPanels[index]).to({x:this.RIGHT_GAME_X}, this.SCROLL_SPEED, Ease.linear);
 
 	//this will become the new index
-	this.GameSelectionPanels[(gameCount + (index - 1)) % gameCount].x = this.CENTER_GAME_X;
+	createjs.Tween.get(this.GameSelectionPanels[(gameCount + (index - 1)) % gameCount]).to({x:this.CENTER_GAME_X}, this.SCROLL_SPEED, Ease.linear);
 
 	//on screen from left
-	this.GameSelectionPanels[(gameCount + (index - 2)) % gameCount].x = this.LEFT_GAME_X;
+	this.GameSelectionPanels[(gameCount + (index - 2)) % gameCount].x = this.LEFT_OFFSCREEN_X;
 	this.GameSelectionPanels[(gameCount + (index - 2)) % gameCount].y = this.GAME_Y;
+	createjs.Tween.get(this.GameSelectionPanels[(gameCount + (index - 2)) % gameCount]).to({x:this.LEFT_GAME_X}, this.SCROLL_SPEED, Ease.linear);
 
 	//set new index
 	this.highlightedIndex = (gameCount + (index - 1)) % gameCount;

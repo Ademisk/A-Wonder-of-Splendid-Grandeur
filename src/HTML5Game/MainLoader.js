@@ -25,7 +25,7 @@ MainLoader.prototype.initialize = function(canvas) {
 	createjs.Ticker.addEventListener("tick", function() {
 		that.update();
 		if (that.inMainMenu) {
-			that.mainMenu.update();
+			that.mainMenu.update(createjs.Ticker.getTime());
 		}
 		else if (that.inGame) {
 			//Update the stage with the Level and Player(s) state
